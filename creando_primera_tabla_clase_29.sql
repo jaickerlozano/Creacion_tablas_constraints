@@ -55,7 +55,8 @@ update coches
 select * from coches;
 
 --  10. Cambiar el nombre de la marca para que aparezca en mayúsculas.
--- no se como hacerlo aún, debo consultar a que se refieren.
+update coches 
+	set marca = upper(marca);
 
 -- 11. Borrar los coches de BMW. (En mi caso borraré los Chevrolet)
 delete from coches2 where marca = 'Suzuki' and modelo = 'Jimmy';
