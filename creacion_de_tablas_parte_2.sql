@@ -9,15 +9,7 @@
  PRECIO               DECIMAL(5,2)
  CPUs                 INT
  FECHA_COMPRA         DATE
- 13.Insertar fila para ver el resultado
-Módulo: SQL
- Profesor: Yolanda López
- 14.Crear otra columna generada que devuelve el nombre y la marca
- concatenada y en mayúsculas. Debe llamarse DATOS_SERVIDOR.
- 15.Insertar una fila para ver el resultado
- 16.Renombra la tabla creada
- 17.Mueve la tabla a otra base de datos y comprueba que ha funcionado
- 18.Borra la tabla que acabas de crear*/
+*/
 
 -- 1. Dentro de la base de datos ‘academia’ crea la siguiente tabla:
 use academia;
@@ -75,5 +67,25 @@ DESC SERVIDOR;
 -- contenga el precio del servidor menos el descuento
 alter table SERVIDOR ADD PRECIO_SERVIDOR INT generated always as (PRECIO-(PRECIO*DESCUENTO/100));
 
+-- 13.Insertar fila para ver el resultado
+insert into SERVIDOR (COD_SERVIDOR, NOMBRE, MARCA, MEMORIA, ALMACENAMIENTO, PRECIO, CPUs, DESCUENTO) values 
+(4, 'HOLA_MUNDO', 'IBM', 8, 256, 350, 5, 10);
 
+-- 14.Crear otra columna generada que devuelve el nombre y la marca
+-- concatenada y en mayúsculas. Debe llamarse DATOS_SERVIDOR.
+alter table SERVIDOR ADD DATOS_SERVIDOR VARCHAR(75) generated always as (UPPER(CONCAT(NOMBRE, MARCA)));
 
+-- 15.Insertar una fila para ver el resultado
+insert into SERVIDOR (COD_SERVIDOR, NOMBRE, MARCA, MEMORIA, ALMACENAMIENTO, PRECIO, CPUs, DESCUENTO) values 
+(5, 'PRUEBA_NUEVA', 'DELL', 16, 1000, 900, 9, 10);
+
+-- 16.Renombra la tabla creada
+rename table SERVIDOR TO SERVIDORES;
+
+-- 17.Mueve la tabla a otra base de datos y comprueba que ha funcionado
+rename table SERVIDORES TO CONQUERBLOCKS.SERVIDORES;
+
+-- 18.Borra la tabla que acabas de crear
+use conquerblocks;
+DROP TABLE SERVIDORES;
+desc SERVIDORES;
