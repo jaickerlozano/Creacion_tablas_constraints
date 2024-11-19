@@ -1,4 +1,4 @@
-/* TABLAS YCONSTRAINTS
+/* TABLAS Y CONSTRAINTS
  1. Dentro de la base de datos ‘academia’ crea la siguiente tabla:
  CAMPO                TIPO
  COD_SERVIDOR         INT
